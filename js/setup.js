@@ -18,10 +18,10 @@ var random = function (wizardProperty) {
   return wizardProperty[Math.floor(Math.random() * wizardProperty.length)];
 };
 
-var makeWizards = function ( wizardsCount ) {
+var makeWizards = function (wizardsCount) {
   var totalWizards = [];
   for (var i = 0; i < wizardsCount; i++) {
-    totalWizards[i] = totalWizards.push({
+    totalWizards.push({
       name: random(wizardNames) + ' ' + random(wizardSurnames),
       coatColor: random(wizardCoats),
       eyesColor: random(wizardEyes)
