@@ -3,14 +3,13 @@
 var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
-var setupSubmit = setup.querySelector('.setup-submit');
 var setupUserName = setup.querySelector('.setup-user-name');
 var ESC_BUTTON = 27;
 var ENTER_BUTTON = 13;
 var COUNT_WIZARDS = 4;
 
 var onPopupEscPress = function (evt) {
-  if (evt.keyCode === 27) {
+  if (evt.keyCode === ESC_BUTTON) {
     closePopup();
   }
 };
@@ -40,7 +39,7 @@ setupOpen.addEventListener('click', function () {
 
 
 setupOpen.addEventListener('keydown', function (evt) {
-  if (evt.keyCode === 13) {
+  if (evt.keyCode === ENTER_BUTTON) {
     openPopup();
   }
 });
@@ -50,7 +49,7 @@ setupClose.addEventListener('click', function () {
 });
 
 setupClose.addEventListener('keydown', function (evt) {
-  if (evt.keyCode === 13) {
+  if (evt.keyCode === ENTER_BUTTON) {
     closePopup();
   }
 });
