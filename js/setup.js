@@ -6,7 +6,7 @@ var setupClose = setup.querySelector('.setup-close');
 var setupSubmit = setup.querySelector('.setup-submit');
 var setupUserName = setup.querySelector('.setup-user-name');
 
-var openPopup = function (evt) {
+var openPopup = function () {
   setup.classList.remove('hidden');
 };
 
@@ -24,7 +24,7 @@ setupOpen.addEventListener('click', function () {
   openPopup();
 
   setupSubmit.addEventListener('keydown', function (evt) {
-    if (e.keyCode === 13) {
+    if (evt.keyCode === 13) {
       setupSubmit.preventDefault();
     }
   });
@@ -40,8 +40,8 @@ setupOpen.addEventListener('click', function () {
 
 setupOpen.addEventListener('keydown', function (evt) {
   if (evt.keyCode === 13) {
-      openPopup();
-  };
+    openPopup();
+  }
 });
 
 setupClose.addEventListener('click', function () {
