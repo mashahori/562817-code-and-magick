@@ -5,14 +5,9 @@ var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
 var setupSubmit = setup.querySelector('.setup-submit');
 var setupUserName = setup.querySelector('.setup-user-name');
-
-var openPopup = function () {
-  setup.classList.remove('hidden');
-};
-
-var closePopup = function () {
-  setup.classList.add('hidden');
-};
+var ESC_BUTTON = 27;
+var ENTER_BUTTON = 13;
+var COUNT_WIZARDS = 4;
 
 var onPopupEscPress = function (evt) {
   if (evt.keyCode === 27) {
@@ -20,19 +15,25 @@ var onPopupEscPress = function (evt) {
   }
 };
 
+var openPopup = function () {
+  setup.classList.remove('hidden');
+};
+
+var closePopup = function () {
+  setup.classList.add('hidden');
+  document.removeEventListener('keydown', onPopupEscPress);
+};
+
 setupOpen.addEventListener('click', function () {
   openPopup();
-
-  setupSubmit.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === 13) {
-      setupSubmit.preventDefault();
-    }
-  });
 
   document.addEventListener('keydown', onPopupEscPress);
 
   setupUserName.addEventListener('focus', function () {
     document.removeEventListener('keydown', onPopupEscPress);
+  });
+  setupUserName.addEventListener('blur', function () {
+    document.addEventListener('keydown', onPopupEscPress);
   });
 
 });
@@ -101,7 +102,6 @@ var wizardNames = ['Иван', 'Хуан', 'Себастьян', 'Мария', '
 var wizardSurnames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 var wizardCoats = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var wizardEyes = ['black', 'red', 'blue', 'yellow', 'green'];
-var COUNT_WIZARDS = 4;
 
 var makeWizards = function (wizardsCount) {
   var totalWizards = [];
