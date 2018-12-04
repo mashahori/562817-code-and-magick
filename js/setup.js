@@ -20,37 +20,37 @@ var openPopup = function () {
 
 var closePopup = function () {
   setup.classList.add('hidden');
-  document.removeEventListener('keydown', onPopupEscPress);
 };
 
 setupOpen.addEventListener('click', function () {
   openPopup();
-
   document.addEventListener('keydown', onPopupEscPress);
-
-  setupUserName.addEventListener('focus', function () {
-    document.removeEventListener('keydown', onPopupEscPress);
-  });
-  setupUserName.addEventListener('blur', function () {
-    document.addEventListener('keydown', onPopupEscPress);
-  });
-
 });
-
 
 setupOpen.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_BUTTON) {
     openPopup();
+    document.addEventListener('keydown', onPopupEscPress);
   }
+});
+
+setupUserName.addEventListener('focus', function () {
+  document.removeEventListener('keydown', onPopupEscPress);
+});
+
+setupUserName.addEventListener('blur', function () {
+  document.addEventListener('keydown', onPopupEscPress);
 });
 
 setupClose.addEventListener('click', function () {
   closePopup();
+  document.removeEventListener('keydown', onPopupEscPress);
 });
 
 setupClose.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_BUTTON) {
     closePopup();
+    document.removeEventListener('keydown', onPopupEscPress);
   }
 });
 
